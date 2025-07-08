@@ -5,10 +5,11 @@
 #ifndef RUBIKSCUBE_H
 #define RUBIKSCUBE_H
 
-#endif //RUBIKSCUBE_H
+
 /* I am using this as a base class for all the models */
 #include<bits/stdc++.h>
 using namespace std;
+
 
 class RubiksCube {
     public:
@@ -71,15 +72,16 @@ class RubiksCube {
     virtual RubiksCube &u2()=0;
     virtual  RubiksCube &l2()=0;
 
+
     string getCornerColorString(uint8_t ind) const;
 
     uint8_t getCornerIndex(uint8_t ind) const;
 
     uint8_t getCornerOrientation(uint8_t ind) const;
 
-
+    void printTopRow() const;
 
 };
-
+#endif //RUBIKSCUBE_H
 
 
