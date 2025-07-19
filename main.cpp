@@ -7,12 +7,12 @@ using namespace std;
 int main() {
     RubiksCube1dArray cube;
 
-    cout << "================ Before U() ================\n";
+    cout << "================ Before b() ================\n";
     cube.printTopRow();
 
-    cube.u();  // Perform U move (top face clockwise)
+    cube.b();  // Perform U move (top face clockwise)
 
-    cout << "\n================ After U() ================\n";
+    cout << "\n================ After b() ================\n";
     cube.printTopRow();
 
     return 0;

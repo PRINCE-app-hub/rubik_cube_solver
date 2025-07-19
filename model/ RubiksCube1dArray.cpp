@@ -81,47 +81,143 @@ RubiksCube& RubiksCube1dArray::u() {
 // }
 
 RubiksCube& RubiksCube1dArray::uPrime() {
-    rotateFace(0);
-    char temp[3];
-    for (int i=0; i<3; i++) temp[i]=cube[getIndex(4, 0, i)];
-    for (int i = 0; i < 3; i++) cube[getIndex(4, 0, i)] = cube[getIndex(3, 0, i)];
-    for (int i=0; i<3; i++) cube[getIndex(3,0,i)]=cube[getIndex(2,0,i)];
-    for (int i=0; i<3; i++) cube[getIndex(2,0,i)]=cube[getIndex(1,0,i)];
-    for (int i=0; i<3; i++) cube[getIndex(1,0,i)] = temp[i];
+    // rotateacwFace(0);
+    // char temp[3];
+    // for (int i=0; i<3; i++) temp[i]=cube[getIndex(4, 0, i)];
+    // for (int i = 0; i < 3; i++) cube[getIndex(4, 0, i)] = cube[getIndex(3, 0, i)];
+    // for (int i=0; i<3; i++) cube[getIndex(3,0,i)]=cube[getIndex(2,0,i)];
+    // for (int i=0; i<3; i++) cube[getIndex(2,0,i)]=cube[getIndex(1,0,i)];
+    // for (int i=0; i<3; i++ ) cube[getIndex(1,0,i)] = temp[i];
+    this->u(); this->u(); this->u();
+    return *this;
 }
-// Dummy implementations (to prevent abstract error)
 
-RubiksCube& RubiksCube1dArray::u2() { return *this; }
-RubiksCube& RubiksCube1dArray::d() { return *this; }
-RubiksCube& RubiksCube1dArray::dPrime() { return *this; }
-RubiksCube& RubiksCube1dArray::d2() { return *this; }
-RubiksCube& RubiksCube1dArray::f() { return *this; }
-RubiksCube& RubiksCube1dArray::fPrime() { return *this; }
-RubiksCube& RubiksCube1dArray::f2() { return *this; }
-RubiksCube& RubiksCube1dArray::b() { return *this; }
-RubiksCube& RubiksCube1dArray::bPrime() { return *this; }
-RubiksCube& RubiksCube1dArray::b2() { return *this; }
-RubiksCube& RubiksCube1dArray::r() { return *this; }
-RubiksCube& RubiksCube1dArray::rPrime() { return *this; }
-RubiksCube& RubiksCube1dArray::r2() { return *this; }
-RubiksCube& RubiksCube1dArray::l() { return *this; }
-RubiksCube& RubiksCube1dArray::lPrime() { return *this; }
-RubiksCube& RubiksCube1dArray::l2() { return *this; }
+
+// Dummy implementations (to prevent abstract error)
+RubiksCube& RubiksCube1dArray::u2() {
+    this->u();
+    this->u();
+    return *this ;
+}
+
+RubiksCube& RubiksCube1dArray::d() {
+    rotateFace(5);
+    char temp[3];
+    for (int i=0; i<3; i++) temp[i]=cube[getIndex(4, 2, i)];
+    for (int i=0; i<3; i++) cube[getIndex(4, 2, i)] = cube[getIndex(3, 2, i)];
+    for (int i=0; i<3; i++) cube[getIndex(3, 2, i)] = cube[getIndex(2, 2, i)];
+    for (int i=0; i<3; i++) cube[getIndex(2, 2, i)] = cube[getIndex(1, 2, i)];
+    for (int i=0; i<3; i++) cube[getIndex(1, 2, i)] = temp[i];
+    return *this ;
+}
+RubiksCube& RubiksCube1dArray::dPrime() {
+    // rotateacwFace(5);
+    // char temp[3];
+    // for (int i=0; i<3; i++) temp[i]=cube[getIndex(4, 2, i)];
+    // for (int i=0; i<3; i++) cube[getIndex(4, 2, i)] = cube[getIndex(1, 2, i)];
+    // for (int i=0; i<3; i++) cube[getIndex(1,2,i)]=cube[getIndex(2, 2, i)];
+    // for (int i=0; i<3; i++) cube[getIndex(2, 2, i)] = cube[getIndex(3, 2, i)];
+    // for (int i=0; i<3; i++) cube[getIndex(3, 2, i)] = temp[i];
+    this->d(); this->d(); this->d();
+    return *this ;
+
+}
+RubiksCube& RubiksCube1dArray::d2() {
+    this->d(); this->d();
+    return *this;
+}
+
+RubiksCube& RubiksCube1dArray::f() {
+    rotateFace(2);
+    char temp[3];
+    for (int i=0; i<3; i++) temp[i]=cube[getIndex(5, 0, i)];
+    for (int i=0; i<3; i++) cube[getIndex(5,0,i)]=cube[getIndex(3,2-i,0)];
+    for (int i=0; i<3; i++) cube[getIndex(3,i,0)] = cube[getIndex(0, 2, i)];
+    for (int i=0;i<3; i++) cube[getIndex(0,2,i)] = cube[getIndex(1,2-i,2)];
+    for (int i=0; i<3; i++) cube[getIndex(1,i,2)] = temp[i];
+    return *this;
+
+}
+
+
+RubiksCube& RubiksCube1dArray::fPrime() {
+    this->f(); this->f();this->f();
+    return *this;
+}
+RubiksCube& RubiksCube1dArray::f2() {  this->f(); this->f(); return *this;}
+RubiksCube& RubiksCube1dArray::b() {
+    rotateFace(4);
+    char temp[3];
+    for (int i=0; i<3; i++) temp[i]=cube[getIndex(5,2,i)];
+    for (int i=0; i<3; i++) cube[getIndex(5,2,i)]=cube[getIndex(1,i,0)];
+    for (int i =0; i<3; i++) cube[getIndex(1,i,0)] = cube[getIndex(0, 0, 2-i)];
+    for (int i=0; i<3; i++) cube[getIndex(0, 0, i)] = cube[getIndex(3, i, 2)];
+    for (int i =0; i<3; i++) cube[getIndex(3, 2-i, 2)] = temp[i];
+    return *this;
+}
+RubiksCube& RubiksCube1dArray::bPrime() { this->b(); this->b(); this->b(); return *this; }
+RubiksCube& RubiksCube1dArray::b2() { this->b(); this->b(); return *this; }
+RubiksCube& RubiksCube1dArray::r() {
+    rotateFace(3);
+    char temp[3];
+    for (int i=0; i<3; i++) temp[i]=cube[getIndex(5, i, 2)];
+    for (int i =0 ; i<3; i++) cube[getIndex(5, i, 2)]=cube[getIndex(4,2-i,0)];
+    for (int i=0; i<3; i++) cube[getIndex(4, i, 0)] = cube[getIndex(0,2-i,2)];
+    for (int i=0; i<3; i++) cube[getIndex(0,i,2)] = cube[getIndex(2,i,2)];
+    for (int i=0; i<3; i++) cube[getIndex(2,i,2)] = temp[i];
+    return *this;
+}
+RubiksCube& RubiksCube1dArray::rPrime() {
+    this->r(); this->r(); this->r();
+    return *this;
+}
+RubiksCube& RubiksCube1dArray::r2() {
+    this->r();this->r();
+    return *this;
+}
+RubiksCube& RubiksCube1dArray::l() {
+    rotateFace(1);
+    char temp[3];
+    for (int i=0; i<3; i++) temp[i]=cube[getIndex(5, i, 0)];
+    for (int i =0; i<3; i++) cube[getIndex(5,i,0)]=cube[getIndex(2,i,0)];
+    for (int i =0; i<3;i++) cube[getIndex(2,i,0)]=cube[getIndex(0,i,0)];
+    for (int i=0; i<3; i++) cube[getIndex(0,i,2)] = cube[getIndex(4,2-i,2)];
+    for (int i=0; i<3; i++) cube[getIndex(4,2-i,2)] = temp[i];
+
+    return *this;
+}
+RubiksCube& RubiksCube1dArray::lPrime() {
+    this->l(); this->l(); this->l();
+    return *this;
+}
+RubiksCube& RubiksCube1dArray::l2() {
+    this->l(); this->l();
+    return *this;
+}
 
 void RubiksCube1dArray::printTopRow() const {
-    std::cout << "Front: ";
-    for (int i = 0; i < 3; i++) std::cout << cube[getIndex(1, 0, i)];
-    std::cout << " <- Front" << std::endl;
-
-    std::cout << "Right: ";
-    for (int i = 0; i < 3; i++) std::cout << cube[getIndex(3, 0, i)];
-    std::cout << " <- Right" << std::endl;
-
-    std::cout << "Back:  ";
-    for (int i = 0; i < 3; i++) std::cout << cube[getIndex(4, 0, i)];
-    std::cout << " <- Back" << std::endl;
-
-    std::cout << "Left:  ";
-    for (int i = 0; i < 3; i++) std::cout << cube[getIndex(2, 0, i)];
-    std::cout << " <- Left" << std::endl;
+//     std::cout << "Front: ";
+//     for (int i = 0; i < 3; i++) std::cout << cube[getIndex(1, 0, i)];
+//     std::cout << " <- Front" << std::endl;
+//
+//     std::cout << "Right: ";
+//     for (int i = 0; i < 3; i++) std::cout << cube[getIndex(3, 0, i)];
+//     std::cout << " <- Right" << std::endl;
+//
+//     std::cout << "Back:  ";
+//     for (int i = 0; i < 3; i++) std::cout << cube[getIndex(4, 0, i)];
+//     std::cout << " <- Back" << std::endl;
+//
+//     std::cout << "Left:  ";
+//     for (int i = 0; i < 3; i++) std::cout << cube[getIndex(2, 0, i)];
+//     std::cout << " <- Left" << std::endl;
+cout << "Top (U): ";
+for (int i = 0; i < 3; i++) cout << cube[getIndex(0, 0, i)] << " ";
+cout << "\nLeft (L): ";
+for (int i = 0; i < 3; i++) cout << cube[getIndex(1, i, 0)] << " ";
+cout << "\nDown (D): ";
+for (int i = 0; i < 3; i++) cout << cube[getIndex(5, 2, i)] << " ";
+cout << "\nRight (R): ";
+for (int i = 0; i < 3; i++) cout << cube[getIndex(3, i, 2)] << " ";
+cout << "\n";
 }
