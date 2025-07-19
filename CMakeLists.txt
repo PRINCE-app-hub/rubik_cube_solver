@@ -11,4 +11,6 @@ add_executable(rubik_cube_solver main.cpp
         solver/BFSSolver.h
         solver/DFSSolver.h
         solver/IDDFSSolver.h
+        PatternDatabases/math.h
+        PatternDatabases/math.cpp
 )
