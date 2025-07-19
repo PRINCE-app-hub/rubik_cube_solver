@@ -7,4 +7,7 @@ add_executable(rubik_cube_solver main.cpp
         model/RubiksCube.h
         model/RubiksCube.cpp
         "model/ RubiksCube1dArray.cpp"
-        model/RubiksCube1dArray.h)
+        model/RubiksCube1dArray.h
+        solver/BFSSolver.h
+        solver/DFSSolver.h
+)
