@@ -13,4 +13,5 @@ add_executable(rubik_cube_solver main.cpp
         solver/IDDFSSolver.h
         PatternDatabases/math.h
         PatternDatabases/math.cpp
+        PatternDatabases/PermutationIndexer.h
 )
